@@ -1,0 +1,201 @@
+
+{
+  "metadata": {
+    "project": "AgroSense-X",
+    "version": "1.0",
+    "description": "Initial crop disease knowledge base",
+    "note": "General educational guidance. Confirm diagnosis and follow local agricultural recommendations before treatment."
+  },
+  "diseases": [
+    {
+      "crop": "Paddy",
+      "name": "bacterial_leaf_blight",
+      "symptoms": [
+        "Yellowing along leaf margins",
+        "Leaf drying that may progress from the tip",
+        "Wilting or drying of affected leaves"
+      ],
+      "prevention": [
+        "Use healthy seed and locally recommended resistant varieties",
+        "Maintain balanced fertilizer application",
+        "Inspect crops regularly and manage infected residues appropriately"
+      ],
+      "treatment": [
+        "Confirm the diagnosis with a local agricultural expert",
+        "Follow locally approved management recommendations",
+        "Avoid applying pesticides without confirming suitability for the crop and disease"
+      ]
+    },
+    {
+      "crop": "Paddy",
+      "name": "blast",
+      "symptoms": [
+        "Spindle-shaped leaf lesions",
+        "Lesions with pale centers and darker margins",
+        "In severe cases, damage to neck or panicle tissues"
+      ],
+      "prevention": [
+        "Use recommended resistant varieties where available",
+        "Avoid excessive nitrogen fertilizer",
+        "Monitor fields for symptoms and follow recommended crop management practices"
+      ],
+      "treatment": [
+        "Confirm disease identity and severity",
+        "Seek local agricultural advice on approved fungicides when necessary",
+        "Follow the product label and local regulations"
+      ]
+    },
+    {
+      "crop": "Paddy",
+      "name": "brown_spot",
+      "symptoms": [
+        "Brown oval or circular spots on leaves",
+        "Spots that may develop yellow margins",
+        "Reduced plant vigor in severe cases"
+      ],
+      "prevention": [
+        "Maintain balanced crop nutrition",
+        "Use healthy seed",
+        "Improve field management and investigate possible nutrient deficiencies"
+      ],
+      "treatment": [
+        "Confirm the cause of the symptoms",
+        "Address verified nutrient or crop-management problems",
+        "Use approved plant-protection products only when recommended"
+      ]
+    },
+    {
+      "crop": "Potato",
+      "name": "Early Blight",
+      "symptoms": [
+        "Brown leaf spots that may develop concentric rings",
+        "Yellowing around affected tissue",
+        "Older leaves may be affected first"
+      ],
+      "prevention": [
+        "Rotate crops with suitable non-host crops",
+        "Reduce prolonged leaf wetness where practical",
+        "Remove or manage infected crop residues"
+      ],
+      "treatment": [
+        "Confirm the disease before treatment",
+        "Use locally approved fungicides only when appropriate",
+        "Follow label directions and resistance-management advice"
+      ]
+    },
+    {
+      "crop": "Potato",
+      "name": "Late Blight",
+      "symptoms": [
+        "Water-soaked-looking leaf patches",
+        "Rapidly expanding dark lesions in favorable conditions",
+        "Possible white growth near lesion margins in humid weather"
+      ],
+      "prevention": [
+        "Monitor local late-blight warnings",
+        "Use healthy seed tubers and recommended varieties",
+        "Avoid unnecessary prolonged leaf wetness"
+      ],
+      "treatment": [
+        "Seek prompt local agricultural advice because the disease can spread rapidly",
+        "Use only approved products appropriate for late blight",
+        "Follow all label instructions and pre-harvest intervals"
+      ]
+    },
+    {
+      "crop": "Tomato",
+      "name": "Tomato___Bacterial_spot",
+      "symptoms": [
+        "Small dark lesions on leaves",
+        "Possible yellow halos around lesions",
+        "Possible spots on stems or fruit"
+      ],
+      "prevention": [
+        "Use healthy seed and transplants",
+        "Avoid handling plants while foliage is wet",
+        "Sanitize tools and manage infected plant debris"
+      ],
+      "treatment": [
+        "Confirm the bacterial diagnosis",
+        "Remove severely affected material where appropriate",
+        "Consult local agricultural guidance about approved management options"
+      ]
+    },
+    {
+      "crop": "Tomato",
+      "name": "Tomato___Early_blight",
+      "symptoms": [
+        "Dark leaf lesions that may have concentric rings",
+        "Yellowing around lesions",
+        "Symptoms often begin on older leaves"
+      ],
+      "prevention": [
+        "Rotate crops where possible",
+        "Avoid overhead irrigation when practical",
+        "Manage infected plant debris"
+      ],
+      "treatment": [
+        "Confirm the disease",
+        "Improve watering and crop hygiene practices",
+        "Use approved fungicides only when locally recommended"
+      ]
+    },
+    {
+      "crop": "Tomato",
+      "name": "Tomato___Late_blight",
+      "symptoms": [
+        "Water-soaked-looking leaf lesions",
+        "Dark, rapidly spreading lesions in favorable weather",
+        "Possible white growth near lesion margins in humid conditions"
+      ],
+      "prevention": [
+        "Monitor crops and local disease alerts",
+        "Avoid prolonged leaf wetness where practical",
+        "Use healthy planting material"
+      ],
+      "treatment": [
+        "Seek prompt expert guidance if late blight is suspected",
+        "Use only locally approved products appropriate for the confirmed disease",
+        "Follow label directions and pre-harvest intervals"
+      ]
+    },
+    {
+      "crop": "Grape",
+      "name": "Downy_Mildew",
+      "symptoms": [
+        "Yellowish or oily-looking spots on the upper leaf surface",
+        "Possible white growth beneath leaves in humid conditions",
+        "Affected leaves may brown and dry"
+      ],
+      "prevention": [
+        "Improve airflow through appropriate canopy management",
+        "Monitor weather and inspect leaves regularly",
+        "Avoid irrigation practices that unnecessarily wet foliage"
+      ],
+      "treatment": [
+        "Confirm the disease with a local grape-production expert",
+        "Use only locally approved products appropriate for downy mildew",
+        "Follow label directions and resistance-management recommendations"
+      ]
+    },
+    {
+      "crop": "Grape",
+      "name": "Powdery_Mildew",
+      "symptoms": [
+        "White or gray powder-like growth on leaves",
+        "Distorted or stunted young growth in some cases",
+        "Affected berries may develop surface damage"
+      ],
+      "prevention": [
+        "Maintain suitable canopy airflow",
+        "Inspect new growth regularly",
+        "Use locally recommended resistant varieties when practical"
+      ],
+      "treatment": [
+        "Confirm the diagnosis",
+        "Consult local grape-production guidance for suitable approved treatments",
+        "Follow product labels and resistance-management advice"
+      ]
+    }
+  ]
+}

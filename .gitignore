@@ -1,0 +1,16 @@
+﻿.venv/
+venv/
+__pycache__/
+*.py[cod]
+.env
+.streamlit/secrets.toml
+
+Datasets/
+Results/
+practice_data/
+preprocessed_data/
+processed_data/
+
+*.db
+*.sqlite
+*.sqlite3
