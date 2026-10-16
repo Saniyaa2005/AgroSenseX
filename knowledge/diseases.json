@@ -1,4 +1,3 @@
-
 {
   "metadata": {
     "project": "AgroSense-X",
@@ -161,7 +160,7 @@
     },
     {
       "crop": "Grape",
-      "name": "Downy_Mildew",
+      "name": "Downy Mildew",
       "symptoms": [
         "Yellowish or oily-looking spots on the upper leaf surface",
         "Possible white growth beneath leaves in humid conditions",
@@ -180,7 +179,7 @@
     },
     {
       "crop": "Grape",
-      "name": "Powdery_Mildew",
+      "name": "Powdery Mildew",
       "symptoms": [
         "White or gray powder-like growth on leaves",
         "Distorted or stunted young growth in some cases",
@@ -195,6 +194,81 @@
         "Confirm the diagnosis",
         "Consult local grape-production guidance for suitable approved treatments",
         "Follow product labels and resistance-management advice"
+      ]
+    },
+    {
+      "crop": "Grape",
+      "name": "Bacterial Leaf Spot",
+      "symptoms": [
+        "Small brown or dark spots on grape leaves",
+        "Some lesions may develop yellowish surrounding tissue",
+        "Severe spotting may cause damaged leaf tissue to dry"
+      ],
+      "prevention": [
+        "Use healthy planting material",
+        "Improve airflow and avoid unnecessary overhead irrigation",
+        "Clean pruning tools and monitor leaves regularly"
+      ],
+      "treatment": [
+        "Have a local grape-production expert confirm the cause of the spots",
+        "Remove severely affected plant material when locally recommended",
+        "Use only locally approved disease-management products after confirming the diagnosis"
+      ]
+    },
+    {
+      "crop": "Grape",
+      "name": "Healthy Leaves",
+      "symptoms": [
+        "No obvious disease symptoms detected",
+        "Leaves appear generally healthy"
+      ],
+      "prevention": [
+        "Inspect vines regularly for new symptoms",
+        "Maintain suitable irrigation and balanced nutrition",
+        "Support good airflow through appropriate canopy management"
+      ],
+      "treatment": [
+        "No disease treatment is indicated by this prediction",
+        "Continue routine vineyard monitoring",
+        "Consult a local expert if concerning symptoms appear"
+      ]
+    },
+    {
+      "crop": "Potato",
+      "name": "Fungi",
+      "symptoms": [
+        "Leaf spots, discoloration, or damaged tissue may occur",
+        "Some fungal diseases cause brown lesions or leaf blight",
+        "Symptoms vary depending on the specific disease"
+      ],
+      "prevention": [
+        "Use healthy planting material",
+        "Avoid prolonged leaf wetness where practical",
+        "Maintain appropriate plant spacing and field hygiene"
+      ],
+      "treatment": [
+        "Identify the specific disease before selecting treatment",
+        "Remove severely affected plant material when appropriate",
+        "Consult a local agricultural expert about suitable management options"
+      ]
+    },
+    {
+      "crop": "Tomato",
+      "name": "Tomato___Tomato_mosaic_virus",
+      "symptoms": [
+        "Light and dark green mosaic patterns on leaves",
+        "Leaves may become distorted, curled, or wrinkled",
+        "Affected plants may show reduced growth"
+      ],
+      "prevention": [
+        "Use healthy seeds and planting material",
+        "Clean tools and hands after handling potentially infected plants",
+        "Avoid transferring plant sap between plants"
+      ],
+      "treatment": [
+        "There is no treatment that cures a systemic viral infection",
+        "Seek confirmation before removing suspected infected plants",
+        "Follow locally recommended sanitation and disease-management practices"
       ]
     }
   ]

@@ -87,7 +87,7 @@ MODEL_CONFIGS = {
 
     "grape": {
         "display_name": "Grape",
-        "model_file": "grape_efficientnet_b0_improved_best.pth",
+        "model_file": "grape_niphad_efficientnet_b0_best.pth",
         "confidence_threshold": 0.75
     }
 }
@@ -123,7 +123,7 @@ def load_model(crop_key):
     checkpoint = torch.load(
         model_path,
         map_location=DEVICE,
-        weights_only=False
+        weights_only=True
     )
 
     class_names = checkpoint[

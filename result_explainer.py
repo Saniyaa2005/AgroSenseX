@@ -328,6 +328,17 @@ def explain_prediction(prediction):
         "name",
     ) or disease
 
+    # Convert dataset labels into farmer-friendly disease names.
+    display_name = str(display_name).replace("___", " ")
+    display_name = display_name.replace("_", " ")
+    display_name = " ".join(display_name.split())
+
+    crop_prefix = f"{crop} "
+    if display_name.lower().startswith(crop_prefix.lower()):
+        display_name = display_name[len(crop_prefix):]
+
+    display_name = display_name.title()
+
     # --------------------------------------------------
     # BUILD FARMER-FRIENDLY EXPLANATION
     # --------------------------------------------------

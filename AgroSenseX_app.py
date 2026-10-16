@@ -421,6 +421,111 @@ if st.session_state.user:
 else:
     st.markdown(f'<div class="agro-card"><h3>👋 {t["welcome"]}</h3><p>Sign in or create an account in the sidebar to personalize your workspace.</p></div>', unsafe_allow_html=True)
 
+
+
+from functools import lru_cache
+
+
+@lru_cache(maxsize=1)
+def load_leaf_model():
+    """Load the Leaf / Non-Leaf model once per server process."""
+    import torch
+    from torch import nn
+    from torchvision import models
+
+    checkpoint_path = (
+        BASE_DIR / "Results" / "Leaf_Validator"
+        / "checkpoints" / "leaf_validator_best.pth"
+    )
+
+    if not checkpoint_path.is_file():
+        raise RuntimeError(
+            "Leaf validator checkpoint missing. Disease prediction blocked."
+        )
+
+    # Only load checkpoints created by our own training process.
+    checkpoint = torch.load(
+        checkpoint_path,
+        map_location="cpu",
+        weights_only=True
+    )
+
+    if checkpoint.get("labels") != ["Non-Leaf", "Leaf"]:
+        raise RuntimeError("Unexpected Leaf Validator classes.")
+
+    model = models.mobilenet_v3_small(weights=None)
+    model.classifier[3] = nn.Linear(
+        model.classifier[3].in_features, 2
+    )
+    model.load_state_dict(checkpoint["model_state_dict"])
+    model.eval()
+
+    return model
+
+
+def validate_leaf_image(image_path):
+    """Reject non-leaf uploads before crop and disease prediction."""
+    import torch
+    from PIL import Image, ImageOps
+    from torchvision import transforms
+
+    model = load_leaf_model()
+
+    transform = transforms.Compose([
+        transforms.Resize((224, 224)),
+        transforms.ToTensor(),
+        transforms.Normalize(
+            [0.485, 0.456, 0.406],
+            [0.229, 0.224, 0.225]
+        ),
+    ])
+
+    with Image.open(image_path) as image:
+        image = ImageOps.exif_transpose(image).convert("RGB")
+        tensor = transform(image).unsqueeze(0)
+
+    with torch.inference_mode():
+        probabilities = torch.softmax(model(tensor), dim=1)[0]
+
+    predicted = ["Non-Leaf", "Leaf"][int(probabilities.argmax())]
+
+    if predicted != "Leaf":
+        raise ValueError(
+            "Non-leaf image detected. Please upload a clear plant leaf photograph."
+        )
+
+    return predicted
+
+
+def validate_selected_crop(image_path, crop_key):
+    """Validate crop selection without a Windows-specific subprocess."""
+    from crop_validator_inference import predict
+
+    try:
+        response = predict(image_path)
+    except Exception as exc:
+        raise RuntimeError(
+            "Crop validation unavailable. Disease prediction blocked."
+        ) from exc
+
+    predicted = response.get("predicted_crop")
+
+    if predicted not in {"Paddy", "Potato", "Tomato", "Grape", "Other"}:
+        raise RuntimeError(
+            "Invalid crop validator response. Disease prediction blocked."
+        )
+
+    if predicted.lower() != crop_key:
+        raise ValueError(
+            f"Crop mismatch: selected {crop_key.title()}, "
+            f"validator identified {predicted}. "
+            "Disease prediction blocked. "
+            "Check the selected crop and upload a clear leaf photo."
+        )
+
+    return response
+
+
 def call_predictor(uploaded_file, crop_label):
     """Bridge Streamlit's UploadedFile to predictor.predict_image(path, crop_key)."""
     import predictor
@@ -448,6 +553,8 @@ def call_predictor(uploaded_file, crop_label):
             temp_path = temp.name
 
         # The existing predictor uses positional parameters image_path, crop_key.
+        validate_leaf_image(temp_path)
+        validate_selected_crop(temp_path, crop_key)
         result = function(temp_path, crop_key)
         if not isinstance(result, dict):
             raise ValueError("predict_image() did not return a dictionary.")
@@ -626,6 +733,7 @@ elif page == t["detect"]:
             st.caption("For best results, use a single leaf in focus with natural lighting.")
 
     if st.button(f"🔬 {t['analyze']}", type="primary", disabled=uploaded is None):
+        st.session_state.pop("latest_prediction", None)
         with st.spinner(t["analyzing"]):
             try:
                 raw = call_predictor(uploaded, crop)
@@ -634,7 +742,7 @@ elif page == t["detect"]:
                 st.session_state.feedback_choice = None
             except Exception as exc:
                 st.error(f"Prediction failed: {exc}")
-                st.info("Check that the matching model checkpoint exists in the Models folder and matches the model architecture.")
+                st.info("For a crop mismatch, select the correct crop or upload a different leaf image. If validation is unavailable, check .venv_gpu and the crop validator checkpoint.")
 
     prediction = st.session_state.get("latest_prediction")
     if prediction:
